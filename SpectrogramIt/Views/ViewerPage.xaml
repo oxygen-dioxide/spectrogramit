@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SpectrogramIt.Controls"
+             x:Class="SpectrogramIt.Views.ViewerPage"
+             Title="查看器">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto,Auto,Auto,Auto" ColumnSpacing="8" Padding="12,8">
+            <Label x:Name="FileNameLabel" Text="未加载" VerticalOptions="Center" LineBreakMode="TailTruncation" />
+            <Button Grid.Column="1" x:Name="ZoomOutBtn" Text="−" WidthRequest="44" Clicked="OnZoomOut" />
+            <Button Grid.Column="2" x:Name="ZoomInBtn" Text="＋" WidthRequest="44" Clicked="OnZoomIn" />
+            <Button Grid.Column="3" x:Name="ScaleBtn" Text="线性" Clicked="OnToggleScale" />
+            <Button Grid.Column="4" x:Name="BackBtn" Text="返回" Clicked="OnBack" />
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <controls:SpectrogramView x:Name="Spectrogram" SeekRequested="OnSeekRequested" />
+            <ActivityIndicator x:Name="Busy" HorizontalOptions="Center" VerticalOptions="Center"
+                               IsRunning="False" IsVisible="False" />
+        </Grid>
+
+        <Label x:Name="InfoLabel" Grid.Row="2" Text="" Padding="12,6" FontSize="12" TextColor="Gray" />
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpectrogramIt.Views.SettingsPage"
+             Title="设置">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <Label Text="设置"
+                   FontSize="24"
+                   FontAttributes="Bold" />
+
+            <Label Text="本页在 MVP（一期）中为占位。后续二期将在此提供："
+                   TextColor="Gray" />
+
+            <VerticalStackLayout Spacing="6">
+                <Label Text="· 频率轴默认：线性 / 对数" />
+                <Label Text="· 共振峰条数（默认 4）与最大频率（默认 5kHz）" />
+                <Label Text="· 分析窗长 / 时步三档（fast / default / precise）" />
+                <Label Text="· 录音默认文件夹" />
+            </VerticalStackLayout>
+
+            <Label Text="当前分析采用 44.1kHz 采样率，f0 由 YIN 计算（二期将加入 CREPE 模型与共振峰）。"
+                   FontSize="12"
+                   TextColor="Gray" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

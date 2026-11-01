@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SpectrogramIt.Core.Tests/SpectrogramIt.Core.Tests.csproj" />
+  <Project Path="SpectrogramIt.Core/SpectrogramIt.Core.csproj" />
+  <Project Path="SpectrogramIt/SpectrogramIt.csproj" />
+</Solution>

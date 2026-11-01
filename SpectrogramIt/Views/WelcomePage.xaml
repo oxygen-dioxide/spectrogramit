@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpectrogramIt.Views.WelcomePage"
+             Title="欢迎">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="20" RowSpacing="12">
+
+        <Label Text="SpectrogramIt"
+               FontSize="28"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               Margin="0,20,0,0" />
+
+        <VerticalStackLayout Grid.Row="1" Spacing="12">
+
+            <Label Text="最近打开的文件"
+                   FontSize="16"
+                   FontAttributes="Bold"
+                   IsVisible="{Binding HasRecent}" />
+
+            <CollectionView x:Name="RecentList"
+                            ItemsSource="{Binding RecentFiles}"
+                            IsVisible="{Binding HasRecent}"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="0,4"
+                                Padding="12,10"
+                                StrokeThickness="0"
+                                BackgroundColor="#1F1F1F"
+                                StrokeShape="RoundRectangle 8">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={x:Reference RecentList}, Path=BindingContext.OpenCommand}"
+                                    CommandParameter="{Binding .}" />
+                            </Border.GestureRecognizers>
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Text="{Binding FileName}" VerticalOptions="Center" LineBreakMode="TailTruncation" />
+                                <Label Grid.Column="1" Text="{Binding Folder}" FontSize="11" TextColor="Gray" VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Text="还没有打开过文件。点击下方按钮打开音频。"
+                   TextColor="Gray"
+                   HorizontalOptions="Center"
+                   Margin="0,40,0,0"
+                   IsVisible="{Binding NoRecent}" />
+        </VerticalStackLayout>
+
+        <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="12">
+            <Button Text="打开音频文件"
+                    Command="{Binding OpenCommand}"
+                    HeightRequest="48" />
+            <Button Grid.Column="1" Text="设置" Command="{Binding GotoSettingsCommand}" HeightRequest="48" />
+        </Grid>
+
+    </Grid>
+</ContentPage>
